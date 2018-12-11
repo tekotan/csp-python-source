@@ -117,4 +117,4 @@ hint('red', secret)
 hint('green', secret)
 
 # Reflection: Based on the output I feel that I have completed this assignment 
-# correctly based on the fact that there was no syntax error and the output matches the answers
+# correctly based on the fact that there was no syntax error and the output matches the answers in the document

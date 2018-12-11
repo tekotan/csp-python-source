@@ -12,7 +12,6 @@ def mean(*list_numbers):
     return total/float(len(list_numbers))
 def perimeter(base,height):
     return 2*(base+height)
-    
 #1.3.2 Function Test
 print (add_tip(20,0.15))
 print (add_tip(30,0.15))
