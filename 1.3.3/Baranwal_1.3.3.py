@@ -62,9 +62,9 @@ def letter_in_word(guess, word):
             Boolean
     '''
     if guess in word:
-        print(True)
+        return True
     else:
-        print(False)
+        return False
 # 12
 def hint(color, secret):
     '''
