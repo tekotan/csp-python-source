@@ -40,9 +40,9 @@ def report_grade(percent):
             TypeError: Raises error if percent arg is not given
     '''
     if percent > 80:
-        print("A grade of {} percent indicates mastery \n Keep up the good work!".format(percent))
+        print("A grade of {} percent indicates mastery\nKeep up the good work!".format(percent))
     else: 
-        print("A grade of {} percent does not indicate mastery \n Seek extra practice or help.".format(percent))
+        print("A grade of {} percent does not indicate mastery\nSeek extra practice or help.".format(percent))
 
 '''Part 3: the in operator'''
 
