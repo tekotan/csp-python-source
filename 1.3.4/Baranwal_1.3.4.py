@@ -1,6 +1,7 @@
 from __future__ import print_function
 import random
-
+from time import sleep
+import sys
 '''Procedure'''
 # 1-4: N/A
 
@@ -157,7 +158,7 @@ def quiz_decimal(low, high):
         if decimal>high:
             print("No, {} is greater that {}".format(decimal, high))
         else:
-            print("No, {} is greater than {}".format(decimal, low))
+            print("No, {} is less than {}".format(decimal, low))
 '''Conclusion'''
 
 #1: Glass box testing is a way to test if all possibilities a if structure controls
@@ -186,7 +187,14 @@ def f_challenge(n):
     returns:
         Whether the number is odd, even, div by 6, and is an int
     '''
-    print(even(n), odd(n), divisible_by_6(n), is_int(n), "", sep="\n")
+    print("Calculating the secrets of the number {} ...".format(n))
+    for i in range(21):
+        sys.stdout.write('\r')
+        # the exact output you're looking for:
+        sys.stdout.write("[%-20s] %d%%" % ('='*i, 5*i))
+        sys.stdout.flush()
+        sleep(0.05)
+    print("\n", even(n), odd(n), divisible_by_6(n), is_int(n), "", sep="\n")
     return [even(n), odd(n), divisible_by_6(n), is_int(n)]
 
 ''' Assignment Check '''
