@@ -135,10 +135,13 @@ def guess_once():
     if guess != secret:
         if guess > secret:
             print ("Too high, - my number was", secret)
+            return False
         else:
             print ("Too low, - my number was", secret)
+            return False
     else:
         print('Right on, I was number', guess, end='!\n')
+        return True
 #9
 
 def quiz_decimal(low, high):
@@ -146,12 +149,16 @@ def quiz_decimal(low, high):
     Function to handle a small question asking for a decimal between high and low
     
     args:
-        low: low bounding number
-        high: higher bounding number
+        low: low bounding number, Must be one of the following types: float
+        high: higher bounding number, Must be one of the following types: float
     returns:
         Correctness of your number given
     '''
-    decimal = float(raw_input("Type a number between {} and {}:\n".format(low, high)))
+    try:
+        decimal = float(raw_input("Type a number between {} and {}:\n".format(low, high)))
+    except ValueError:
+        print("Please enter an integer!")
+        decimal = float(raw_input("Type a number between {} and {}:\n".format(low, high)))
     if low<decimal<high:
         print("Good! {} < {} < {}".format(low, decimal, high))
     else:
@@ -171,10 +178,10 @@ def quiz_decimal(low, high):
 
 #4: Yes
 #Functions for every output on the flow chart
-even = lambda num: "{} is even".format(num) if num%2 == 0 and num%3 != 0 else "{} is not even".format(num)
-odd = lambda num: "{} is odd".format(num) if num%3==0 and num%2 != 0 else "{} is not odd".format(num)
+even = lambda num: "{} is even".format(num) if num%2 == 0 else "{} is not even".format(num)
+odd = lambda num: "{} is odd".format(num) if num%2 != 0 else "{} is not odd".format(num)
 divisible_by_6 = lambda num: "{} is divisible by 6".format(num) if num%6==0 else "{} is not divisible by 6".format(num)
-is_int = lambda num: "{} is an int".format(num) if num%6==0 else "{} is not an int".format(num)
+is_int = lambda num: "{} is an int".format(num) if isinstance(num, int) else "{} is not an int".format(num)
 
 
 ''' Challenge '''
