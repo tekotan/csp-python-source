@@ -36,7 +36,8 @@ def food_id(food):
 #   ii:apple
 #   iii:Potato
 #   iv:cheese
-#1c: the banana will never be returned as starchy because the else block will not run as banana is in the fruits list
+#1c: the banana will never be returned as starchy because the else block will 
+#    not run as banana is in the fruits list
 
 #2:
 
@@ -66,7 +67,7 @@ def food_id_test():
 #3:
 def f(n):
     '''
-    Function that will describe an input as not an int, odd, even, or a multiple of 6
+    Function that will describe an input as not an int, odd, even, or a mult of 6
     
     args:
         n: any kind of input
@@ -99,7 +100,10 @@ def f_test():
     "The number is odd":1, "The number is not an integer":10.3}
     for output, arg in test_cases.items():
         if f(arg) != output:
-            return False
+            break
+    else:
+        return False
+    return True
 
 #7: the difference between the + in the concatenation and the + in addition is 
 # that the concat + requires both addends to be the same type, while the addition 
@@ -155,10 +159,12 @@ def quiz_decimal(low, high):
         Correctness of your number given
     '''
     try:
-        decimal = float(raw_input("Type a number between {} and {}:\n".format(low, high)))
+        decimal = \
+        float(raw_input("Type a number between {} and {}:\n".format(low, high)))
     except ValueError:
         print("Please enter an integer!")
-        decimal = float(raw_input("Type a number between {} and {}:\n".format(low, high)))
+        decimal = \
+        float(raw_input("Type a number between {} and {}:\n".format(low, high)))
     if low<decimal<high:
         print("Good! {} < {} < {}".format(low, decimal, high))
     else:
@@ -178,32 +184,18 @@ def quiz_decimal(low, high):
 
 #4: Yes
 #Functions for every output on the flow chart
-even = lambda num: "{} is even".format(num) if num%2 == 0 else "{} is not even".format(num)
-odd = lambda num: "{} is odd".format(num) if num%2 != 0 else "{} is not odd".format(num)
-divisible_by_6 = lambda num: "{} is divisible by 6".format(num) if num%6==0 else "{} is not divisible by 6".format(num)
-is_int = lambda num: "{} is an int".format(num) if isinstance(num, int) else "{} is not an int".format(num)
+even = lambda num: "{} is even".format(num) if num%2 == 0 else \
+                                                    "{} is not even".format(num)
+odd = lambda num: "{} is odd".format(num) if num%2 != 0 else \
+                                                    "{} is not odd".format(num)
+divisible_by_6 = lambda num: "{} is divisible by 6".format(num) if num%6==0 else \
+                                            "{} is not divisible by 6".format(num)
+is_int = lambda num: "{} is an int".format(num) if isinstance(num, int) else \
+                                                    "{} is not an int, its a {}".format(num, type(num))
 
 
 ''' Challenge '''
-def f_challenge(n):
-    '''
-    Challenge function to return all possible results from the flowchart
-    
-    args:
-        n: number to test
-    returns:
-        Whether the number is odd, even, div by 6, and is an int
-    '''
-    print("Calculating the secrets of the number {} ...".format(n))
-    for i in range(21):
-        sys.stdout.write('\r')
-        # the exact output you're looking for:
-        sys.stdout.write("[%-20s] %d%%" % ('='*i, 5*i))
-        sys.stdout.flush()
-        sleep(0.05)
-    print("\n", even(n), odd(n), divisible_by_6(n), is_int(n), "", sep="\n")
-    return [even(n), odd(n), divisible_by_6(n), is_int(n)]
-
+f_challenge = lambda n: [even(n), odd(n), divisible_by_6(n), is_int(n)]
 ''' Assignment Check '''
 print(food_id('apple'))
 food_id_test()
@@ -216,10 +208,10 @@ guess_once()
 guess_once()
 quiz_decimal(4, 4.1)
 quiz_decimal(4, 4.1)
-f_challenge(1.1)
-f_challenge(2)
-f_challenge(3)
-f_challenge(6)
+print(f_challenge(1.1))
+print(f_challenge(2))
+print(f_challenge(3))
+print(f_challenge(6))
 
 '''Assingment Check'''
 
