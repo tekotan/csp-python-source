@@ -191,7 +191,7 @@ odd = lambda num: "{} is odd".format(num) if num%2 != 0 else \
 divisible_by_6 = lambda num: "{} is divisible by 6".format(num) if num%6==0 else \
                                             "{} is not divisible by 6".format(num)
 is_int = lambda num: "{} is an int".format(num) if isinstance(num, int) else \
-                                                    "{} is not an int, its a {}".format(num, type(num))
+                                                    "{} is not an int".format(num)
 
 
 ''' Challenge '''
