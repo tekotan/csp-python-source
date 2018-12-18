@@ -65,6 +65,7 @@ def food_id_test():
         return False
 
 #3:
+
 def f(n):
     '''
     Function that will describe an input as not an int, odd, even, or a mult of 6
