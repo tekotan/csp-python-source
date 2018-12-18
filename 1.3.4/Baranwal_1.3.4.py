@@ -40,7 +40,6 @@ def food_id(food):
 #    not run as banana is in the fruits list
 
 #2:
-
 def food_id_test():
     ''' Unit test for food_id
     returns True if good, returns False and prints error if not 
@@ -65,7 +64,6 @@ def food_id_test():
         return False
 
 #3:
-
 def f(n):
     '''
     Function that will describe an input as not an int, odd, even, or a mult of 6
