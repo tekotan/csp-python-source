@@ -191,7 +191,6 @@ class Story():
         print("Witch: I can\'t let that happen")
         time.sleep(1)
         print("Gretel, save me! The witch captured me!")
-        #import pdb; pdb.set_trace()
         if self.name == "Hansel":
             print("You were locked up in the dungeon, getting ready to be eaten")
         elif self.name == "Gretel":
