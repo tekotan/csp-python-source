@@ -215,7 +215,7 @@ class Story():
         """
         Function packages the code of scene 7 in order for it to be called by
         and uses the variable name and it will create different situations based 
-        on the character
+        response = raw_input("Do you want to talk to the witch (Y \n").lower()
         """
         response = raw_input("Do you want to talk to the witch? (Yes/No) \n"
             ).lower()
@@ -359,7 +359,7 @@ class Story():
             sep="\n",
         )
         time.sleep(2)
-        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")
+        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")      d
 
 
     def play_story(self):

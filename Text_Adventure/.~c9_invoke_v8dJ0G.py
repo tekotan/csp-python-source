@@ -10,7 +10,7 @@ class Story():
     """
     def __init__(self):
         self.name = "" #Makes it possible to have a different output 
-                       #based on the name of the character
+                        #based on the name of the character
     def scene_1(self):
         """
         Function will package scene 1 and will allow it to be called multiple 
@@ -359,7 +359,7 @@ class Story():
             sep="\n",
         )
         time.sleep(2)
-        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")
+        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")      d
 
 
     def play_story(self):

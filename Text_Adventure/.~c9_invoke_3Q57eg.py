@@ -17,7 +17,7 @@ class Story():
         times
         """
         response = raw_input("Do you want the instructions? (Yes/No) \n").lower()
-        if response == "yes":
+            print( #Makes itpossible
             print( 
                 "Great, This game is based on the responses you input.",
                 "Please write your answer the same way that it is written",
@@ -359,7 +359,7 @@ class Story():
             sep="\n",
         )
         time.sleep(2)
-        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")
+        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")      d
 
 
     def play_story(self):

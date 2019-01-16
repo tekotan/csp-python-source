@@ -2,7 +2,7 @@
 from __future__ import print_function
 import time
 import sys
-import random
+im
 
 class Story():
     """
@@ -359,7 +359,7 @@ class Story():
             sep="\n",
         )
         time.sleep(2)
-        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")
+        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")      d
 
 
     def play_story(self):

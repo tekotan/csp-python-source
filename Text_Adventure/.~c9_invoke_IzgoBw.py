@@ -9,7 +9,7 @@ class Story():
     Class that will package the complete story
     """
     def __init__(self):
-        self.name = "" #Makes it possible to have a different output 
+        self.name = "" #Makes it possible to have a different 
                        #based on the name of the character
     def scene_1(self):
         """
@@ -359,7 +359,7 @@ class Story():
             sep="\n",
         )
         time.sleep(2)
-        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")
+        print("This is created by Sragvi Vadali and Tanish Baranwal \n\n\n\n")      d
 
 
     def play_story(self):
