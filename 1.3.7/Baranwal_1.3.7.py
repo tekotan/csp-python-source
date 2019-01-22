@@ -37,7 +37,7 @@ def roll_hundred_pair():
     """ Creates a histogram on 100 rolls of a dice """
     rolls = []
     for roll in range(100):
-        rolls.append(random.randint(1,6))
+        rolls.append(random.randint(1,6)+random.randint(1,6))
     plt.hist(rolls)
     plt.savefig('./roll_hundred_pair')
 
@@ -52,7 +52,7 @@ def dice(num_rolls):
     returns: sum of dice rolls
     """
     total_roll = 0
-    for roll in num_rolls:
+    for roll in range(num_rolls):
         total_roll += random.randint(1,6)
     print("Roll was {}".format(total_roll))
 
@@ -106,7 +106,7 @@ def goguess():
     guess = ""
     num_guesses = 0
     while guess != number:
-        guess = int(raw_input("I Have a number between 1 and 20 inclusive \n Guess : "))
+        guess = int(raw_input("I have a number between 1 and 20 inclusive \n Guess : "))
         if guess > number:
             print("{} is too high".format(guess))
         else:
@@ -115,3 +115,60 @@ def goguess():
     print("Right! My Number is {}! You guessed in {} guesses!".format(number, num_guesses))
 #10: if the number was changed to 1 to 6000, one would need 6000 guesses to be sure.
 
+# 11a: 
+def matches(winning_ticket, ticket):
+    """
+    Find the number of numbers common between the winning_ticket and the ticket
+    args:
+        winning_ticket: The set of numbers of the winning ticket
+        ticket: The set of numbers of the ticket
+    returns: the number of common numbers between the winning ticket and ticket
+    """
+    match = 0
+    for number in ticket:
+        if ticket in winning_ticket:
+            match += 1
+    return match, sum(map(lambda x: 1 if x in winning_ticket else 0, ticket))
+
+# 11b:
+def report(guess, secret):
+    """
+    Function to mimic mastermind game
+    args:
+        guess: A list of the guess
+        secret: A list of the secret true order
+    returns:
+        The number of colors in the right place and the wrong place
+    """
+    correct_in_place =  0
+    correct_out_of_place = 0
+    temp_secret = list(secret)
+    for index in range(len(guess)):
+        if guess[index] == secret[index]:
+            correct_in_place +=1
+            temp_secret[index] = ""
+        elif guess[index] in temp_secret:
+            correct_out_of_place += 1
+    return [correct_in_place, correct_out_of_place]
+
+""" Conclusion """
+# 1: The disadvantage of coding that way is that 1. It is inefficient and 2. 
+#    It is highly error prone
+
+# 2: The iteration over a dataset is often required for it's analysis because one 
+#    must look at all data pieces
+
+# 3: A for loop has a fixed iteration set, while the while loop can have an unclear 
+#    number of iterations because of a condition
+""" Assignment Test """
+roll_hundred_pair()
+print(dice(100))
+validate()
+guess_winner()
+goguess()
+winning_ticket = [1,23,42,41,5,3]
+ticket = [5, 3, 1, 34, 2, 100]
+print(matches(winning_ticket, ticket))
+guess = ['red','red','red','green','yellow']
+secret = ['red','red','yellow','yellow','black']
+print(report(guess, secret))
