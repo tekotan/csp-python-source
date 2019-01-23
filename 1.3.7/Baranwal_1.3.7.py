@@ -160,6 +160,11 @@ def report(guess, secret):
 
 # 3: A for loop has a fixed iteration set, while the while loop can have an unclear 
 #    number of iterations because of a condition
+
+# 4: The strength of the process I used was that I could write the complete code and 
+#    have it work without having to run it preliminarily. Something I could improve 
+#    on is to prevent over engineering a solution to something that could be solved 
+#    in a simpler way
 """ Assignment Test """
 roll_hundred_pair()
 print(dice(100))
