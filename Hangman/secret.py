@@ -2,7 +2,8 @@
 Module that holds all answers and hidden variables
 """
 
-secret = [
-    "Hello World",
-    "Home"
+secret_list = [
+    "hello world",
+    "home",
+    "CSP projects are fun",
 ]
