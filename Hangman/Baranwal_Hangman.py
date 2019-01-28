@@ -1,6 +1,8 @@
 from __future__ import print_function
 from random import choice, randint
-import secret
+import utils
+import time
+import sys
 
 def hangman_display(guessed, secret):
     """
@@ -26,16 +28,18 @@ def return_incorrect_letters(guessed, secret, prev_guesses):
     """
     return sum(list(map(lambda char: 1 if char not in secret and char not in \
             prev_guesses else 0, guessed)))
-def play_game():
+def hangman():
     incorrect_letters_threshold = 10
     prev_incorrect_letters = set()
     first_iter = True
     prev_guess = ""
     print("You have 10 total incorrect letters that you can guess \n")
-    secret_phrase = choice(secret.secret_list).lower()
+    secret_phrase = choice(utils.secret_list).lower()
     while incorrect_letters_threshold > 0:
         try:
             guess = raw_input("Enter your guess: \n")
+            print("Calculating Results:\n")
+            time.sleep(0.5)
             output_str, correct_guess = hangman_display(guess+prev_guess, secret_phrase)
             prev_guess += correct_guess
             incorrect_letters_threshold -= return_incorrect_letters(guess, secret_phrase, prev_incorrect_letters)
@@ -56,12 +60,16 @@ def play_game():
             break
     else:
         _, letters_right = hangman_display(secret_phrase, output_str)
-        print("Sorry, you ran out of tries\n")
-        print("The message was {}".format(secret_phrase))
-        print("You needed the letters {} to win".format(", ".join(set(filter(lambda \
+        if secret_phrase == output_str:
+            print("Sorry, you got the right answer but guessed too many incorrect letters")
+            print("The message was {}".format(secret_phrase))
+        else:
+            print("Sorry, you ran out of tries\n")
+            print("The message was {}".format(secret_phrase))
+            print("You needed the letters {} to win".format(", ".join(set(filter(lambda \
                                         char: char not in letters_right, secret_phrase)))))
         print("\n\n\n\n")
         replay = raw_input("Do you want to play again?")
         if replay.lower() == "yes":
-            play_game()
-play_game()
+            hangman()
+hangman()
