@@ -1,6 +1,6 @@
 from __future__ import print_function
 from random import choice, randint
-import utils
+import utils_improved as utils
 import time
 import sys
 import pdb
