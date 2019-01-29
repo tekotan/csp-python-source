@@ -3,10 +3,15 @@ Module that holds all answers and hidden variables
 """
 
 secret_list = [
-    "hello world",
-    "home",
-    "CSP projects are fun",
+    "Sragvi",
+    "Vedant",
+    "Conner",
+    "Tanish",
+    "Abhi",
+    "Vincent",
+    "Ryan",
 ]
+
 hangman_ascii = [
 """
    ____
@@ -118,9 +123,9 @@ Phrase: {phrase}
   |    |      Phrase #:    {phrase_num}
   |           Guessed : {guessed_letters}
   |           Average :  {avg_}%
-  |    
-  |   
- _|_
+  |           
+  |           
+ _|_          
 |   |______
 |          |
 |__________|

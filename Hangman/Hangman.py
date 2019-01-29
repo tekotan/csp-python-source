@@ -1,8 +1,9 @@
 from __future__ import print_function
 from random import choice, randint
-import utils
+import utils_improved as utils
 import time
 import sys
+import pdb
 
 def hangman_display(guessed, secret):
     """
@@ -23,38 +24,48 @@ def return_incorrect_letters(guessed, secret, prev_guesses):
     args:
         guessed: The letters that is guessed
         secret: The correct hangman phrase
+        prev_guesses: The letters already guessed so incorrect guesses aren't counted 2 times
     returns:
         The number of letters in guessed not in secret
     """
     return sum(list(map(lambda char: 1 if char not in secret and char not in \
             prev_guesses else 0, guessed)))
-def hangman():
-    incorrect_letters_threshold = 10
-    prev_incorrect_letters = set()
-    first_iter = True
-    prev_guess = ""
-    print("You have 10 total incorrect letters that you can guess \n")
+def play_game():
     secret_phrase = choice(utils.secret_list).lower()
-    while incorrect_letters_threshold > 0:
+    game_status = {
+        "incorrect_letters_threshold":9,
+        "print_vals":{
+            "phrase_num":1,
+            "guessed_letters":"",
+            "avg_":0,
+            "theme":"",
+            "phrase":hangman_display("", secret_phrase)[0]
+            
+        },
+        "prev_guess":set(),
+        "num_correct_guesses": 0,
+        "num_incorrect_guesses": 0
+    }
+
+    while game_status["incorrect_letters_threshold"] > 0:
+        print(utils.hangman_ascii[max(game_status["incorrect_letters_threshold"]-1, 0)].format(**game_status["print_vals"]))
         try:
             guess = raw_input("Enter your guess: \n")
-            print("Calculating Results:\n")
-            time.sleep(0.5)
-            output_str, correct_guess = hangman_display(guess+prev_guess, secret_phrase)
-            prev_guess += correct_guess
-            incorrect_letters_threshold -= return_incorrect_letters(guess, secret_phrase, prev_incorrect_letters)
-            if output_str != secret_phrase or incorrect_letters_threshold<1:
-                if not first_iter:
-                    print("You have already guessed {}!".format(", ".join(filter(lambda char: char in prev_incorrect_letters, guess))))
-                prev_incorrect_letters.update(guess)
-                print("You have {} more incorrect letters".format(max(incorrect_letters_threshold, 0)))
-                print(output_str)
-            else:
+            output_str, correct_guess = hangman_display(guess+"".join(game_status["prev_guess"]), secret_phrase)
+            game_status["print_vals"]["phrase"] = output_str
+            game_status["print_vals"]["guessed_letters"] = ", ".join(game_status["prev_guess"])
+            game_status["incorrect_letters_threshold"] -= return_incorrect_letters(guess, secret_phrase, game_status["prev_guess"])
+            game_status["num_correct_guesses"] += len(correct_guess)
+            game_status["num_incorrect_guesses"] += len(game_status["prev_guess"]) - len(correct_guess)
+            try:
+                game_status["print_vals"]["avg_"] = game_status["num_correct_guesses"]/len(game_status["prev_guess"])
+            except ZeroDivisionError:
+                game_status["print_vals"]["avg_"] = 0
+            game_status["prev_guess"].update(guess)
+            if game_status["print_vals"]["phrase"] == secret_phrase:
                 print("You won!")
-                print("The phrase was {}".format(secret_phrase))
                 break
-            if first_iter:
-                first_iter = False
+            # pdb.set_trace()
         except KeyboardInterrupt:
             print("\nYou exited the game")
             break
@@ -71,5 +82,5 @@ def hangman():
         print("\n\n\n\n")
         replay = raw_input("Do you want to play again?")
         if replay.lower() == "yes":
-            hangman()
-hangman()
+            play_game()
+play_game()
