@@ -26,7 +26,7 @@ def hangman():
     print("---You have {} total incorrect letters that you can guess--------\n"\
                 .format(game_vals.incorrect_letters_threshold))
     print("Phrase: {}".format(utils.hangman_display("", game_vals.name)[0]))
-    print("Testing Phrase: {}".format(game_vals.name)) # Will be removed after testing
+    # print("Testing Phrase: {}".format(game_vals.name)) # Will be removed after testing
     while game_vals.incorrect_letters_threshold > 0 and not game_vals.win:
         try:
             guess = raw_input("Enter your guess: \n").lower()
@@ -56,7 +56,7 @@ def hangman():
                     game_vals.prev_incorrect_letters.update(guess)
                     # print("You have {} more incorrect letters".format(\
                     #             max(game_vals.incorrect_letters_threshold, 0)))
-                    print(utils.hangman_ascii[max(game_vals.incorrect_letters_threshold, 0)])
+                    print(utils.hangman_ascii[max(game_vals.incorrect_letters_threshold-1, 0)])
                     print(game_vals.output_str)
                 else:
                     print("You won!")

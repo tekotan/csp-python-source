@@ -1,5 +1,5 @@
 """
-Module that holds all answers and hidden variables
+Module that holds all functions and hidden variables
 """
 #####################################################################################
 ################# Classes and Functions for the Hangman Game ########################
@@ -44,7 +44,7 @@ def return_incorrect_letters(guessed, secret, prev_guesses):
     return sum(list(map(lambda char: 1 if char not in secret and char not in \
             prev_guesses else 0, set(guessed))))
 #####################################################################################
-################################ Possible Secrets ###################################
+########################### Lists with Words and Ascii ##############################
 #####################################################################################
 secret_dict = {
     "Sragvi":"Person in the Class that asks a lot of questions",
