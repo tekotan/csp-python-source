@@ -63,6 +63,7 @@ secret_dict = {
     "Anurag":"Partners with Vedant",
     "Anika":"Partners with Andrea",
     "Diego":"Programs in Java",
+    "Michael":"Asian",
 }
 hangman_ascii = [
 """
