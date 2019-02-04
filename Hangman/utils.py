@@ -7,13 +7,16 @@ Module that holds all functions and hidden variables
 class GameStatus(object):
     """
     Class that holds all game values for the course of a cycle of the hangman game
-    
-    args:
-        Any and all values to store into the game_status object
-    returns:
-        None
+
     """
     def __init__(self, **kwargs):
+        """
+        Function that initializes the class with attributes as the args
+        args:
+            Any and all values to store into the game_status object
+        returns:
+        None
+        """
         for key, value in kwargs.items():
             if not hasattr(self, key):
                 setattr(self, key, value)
@@ -55,6 +58,11 @@ secret_dict = {
     "Vincent":"A Senior",
     "Ryan":"Partner with Connor",
     "Rohan":"Friends with Abhi",
+    "Andrea":"Likes Anime",
+    "Riya":"Comes late to class",
+    "Anurag":"Partners with Vedant",
+    "Anika":"Partners with Andrea",
+    "Diego":"Programs in Java",
 }
 hangman_ascii = [
 """
@@ -62,8 +70,9 @@ hangman_ascii = [
   |    |    
   |    o      
   |   /|\    
-  |    |    
-  |   / \    \n
+  |    |
+  |    |
+  |   / \    
  _|_         
 |   |______
 |          |
@@ -74,6 +83,7 @@ hangman_ascii = [
   |    |  
   |    o   
   |   /|\ 
+  |    |
   |    |
   |   / 
  _|_
@@ -87,6 +97,7 @@ hangman_ascii = [
   |    o   
   |   /|\  
   |    |
+  |    |
   |   
  _|_
 |   |______
@@ -97,6 +108,18 @@ hangman_ascii = [
    ____
   |    |   
   |    o   
+  |   /|\   
+  |    |
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+""",
+"""
+   ____
+  |    |    
+  |    o     
   |   /|\   
   |    
   |   

@@ -25,8 +25,9 @@ def hangman():
     print("------Lets See How Well You Know the People in Our Class---------")
     print("---You have {} total incorrect letters that you can guess--------\n"\
                 .format(game_vals.incorrect_letters_threshold))
+    print("------------------Type Hint for a Hint---------------------------")          
     print("Phrase: {}".format(utils.hangman_display("", game_vals.name)[0]))
-    # print("Testing Phrase: {}".format(game_vals.name)) # Will be removed after testing
+    print("Testing Phrase: {}".format(game_vals.name)) # Will be removed after testing
     while game_vals.incorrect_letters_threshold > 0 and not game_vals.win:
         try:
             guess = raw_input("Enter your guess: \n").lower()
@@ -56,7 +57,7 @@ def hangman():
                     game_vals.prev_incorrect_letters.update(guess)
                     # print("You have {} more incorrect letters".format(\
                     #             max(game_vals.incorrect_letters_threshold, 0)))
-                    print(utils.hangman_ascii[max(game_vals.incorrect_letters_threshold-1, 0)])
+                    print(utils.hangman_ascii[max(game_vals.incorrect_letters_threshold, 0)])
                     print(game_vals.output_str)
                 else:
                     print("You won!")
@@ -76,7 +77,6 @@ def hangman():
         except KeyboardInterrupt:
             print("\nYou exited the game")
             break
-        sys.stdout.flush()
     else:
         if not game_vals.win:
             _, letters_right = utils.hangman_display(game_vals.name, game_vals.output_str)
@@ -84,7 +84,6 @@ def hangman():
                 print("Sorry, you got the right answer but guessed too many incorrect letters")
                 print("The message was {}".format(game_vals.name))
             else:
-                print(utils.hangman_ascii[0])
                 print("Sorry, you ran out of tries\n")
                 print("The message was {}".format(game_vals.name))
                 print("You needed the letters {} to win".format(", ".join(set(filter(lambda \
