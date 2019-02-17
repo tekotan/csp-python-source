@@ -1,1 +1,0 @@
-/usr/lib/python3.4/encodings/big5.py

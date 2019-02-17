@@ -1,1 +1,0 @@
-/usr/lib/python3.4/encodings/iso2022_kr.py
